@@ -7,9 +7,9 @@ import Screen from "./components/Screen";
 
 function App() {
 
-  const [disp, setDisp] = useState("")
+  const [disp, setDisp] = useState([])
 
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState([])
 
   function handleChange(event) {
     const input = event.target.value
@@ -18,8 +18,23 @@ function App() {
     setDisp(input)
   }
 
+  function errorCatch() {
+    setValue(prevState => prevState === "+" ||
+    prevState === "*" ||
+    prevState === "/" ||
+    prevState === "-+" ||
+    prevState === "-*" ||
+    prevState === "-/" ||
+    prevState === "--"
+    ? setDisp("ERROR")
+    : prevState)
+  }
+
   function calculate() {
-    
+
+    setDisp(eval(value))
+    setValue(value) 
+
   }
 
   function backspace() {
@@ -32,13 +47,12 @@ function App() {
     setDisp("")
   }
 
-
   return (
     <div className="App">
       <div className="calculator">
       <Screen value={value}/>
       <Display disp={disp}/>
-      <Buttons handleChange={handleChange} calculate={calculate} backspace={backspace} clear={clear} />
+      <Buttons handleChange={handleChange} calculate={calculate} backspace={backspace} clear={clear} errorCatch={errorCatch}/>
       </div>
 
     </div>

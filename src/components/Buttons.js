@@ -1,38 +1,41 @@
 import React from "react"
 
-export default function Buttons(props) {
+const btnValues = [
+    ["AC", "DEL", "/"],
+    [7, 8, 9,"X"],
+    [4, 5, 6, "-"],
+    [1, 2, 3, "+"],
+    [0, ".", "="]
+]
 
-    
+export default function Buttons(props) {  
     return (
         <div className="buttons">
-            <button className="AC" onClick={props.clear} value={"AC"}>AC</button>
-            <button onClick={props.backspace} value={"DEL"}>DEL</button>
-            <button className="light" onClick={props.handleChange} value={"/"}>/</button>
-
-            <button onClick={props.handleChange} value={7}>7</button>
-            <button onClick={props.handleChange} value={8}>8</button>
-            <button onClick={props.handleChange} value={9}>9</button>
-
-            <button className="light" onClick={props.handleChange} value={"*"}>X</button>
-
-            <button onClick={props.handleChange} value={4}>4</button>
-            <button onClick={props.handleChange} value={5}>5</button>
-            <button onClick={props.handleChange} value={6}>6</button>
-
-            <button className="light"onClick={props.handleChange} value={"-"}>-</button>
-
-            <button onClick={props.handleChange} value={1}>1</button>
-            <button onClick={props.handleChange} value={2}>2</button>
-            <button onClick={props.handleChange} value={3}>3</button>
-
-            <button className="light"onClick={props.handleChange} value={"+"}>+</button>
-
-            <button onClick={props.backspace} value={0}>0</button>
-
-
-            <button onClick={props.handleChange} value={"."}>.</button>
-
-            <button className="equal" onClick={props.calculate} value={"="}>=</button>
+            {
+                btnValues.flat().map((i) => {
+                    return (
+                        <button 
+                            key={i}
+                            value={i}
+                            onClick={(e) => 
+                                i === "AC"
+                                ? props.clear(e)
+                                : i === "="
+                                ? props.calculate(e)
+                                : i === "DEL"
+                                ? props.backspace(e)
+                                : props.handleChange(e)
+                            }
+                            className={
+                                i === "AC" ? "AC" :
+                                i === "=" ? "equal" :
+                                i === "/" || i === "X" || i === "+" || i === "-" ? "light" :
+                                ""
+                            }
+                        >{i}</button>
+                    )
+                })
+            }
         </div>
     )
 }

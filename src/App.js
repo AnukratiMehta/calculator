@@ -7,37 +7,29 @@ import Screen from "./components/Screen";
 
 function App() {
 
-  // const [disp, setDisp] = useState("")
-
-  // function displayValue(event) {
-  //   setDisp(event.target.value) 
-  // }
+  const [disp, setDisp] = useState("")
 
   const [value, setValue] = useState("")
 
   function handleChange(event) {
-    setValue(prevState => prevState + event.target.value)
+    const input = event.target.value
+
+    setValue(prevState => prevState + input)
+    setDisp(input)
   }
 
-  // function buttonClick(e) {
-  //   handleChange(e);
-  //   displayValue()
-  // }
-
   function calculate() {
-    setValue(eval(value))
-    // setDisp(eval(disp))
     
   }
 
   function backspace() {
     setValue(value.slice(0, -1))
-    // setDisp(disp.slice(0, -1))
+    setDisp(disp.slice(0, -1))
   }
 
   function clear() {
     setValue("")
-    // setDisp("")
+    setDisp("")
   }
 
 
@@ -45,12 +37,8 @@ function App() {
     <div className="App">
       <div className="calculator">
       <Screen value={value}/>
-      <Display 
-      // disp={disp}
-      />
-      <Buttons handleChange={handleChange} calculate={calculate} backspace={backspace} clear={clear} 
-      // buttonClick={buttonClick}
-      />
+      <Display disp={disp}/>
+      <Buttons handleChange={handleChange} calculate={calculate} backspace={backspace} clear={clear} />
       </div>
 
     </div>

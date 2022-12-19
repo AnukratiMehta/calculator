@@ -1,5 +1,6 @@
 {
   "name": "js-calculator",
+  "homepage": "https://AnukratiMehta.github.io/calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,8 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +40,5 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
-  },
-  "homepage": "http://{github-username}.github.io/{repo-name}"
+  }
 }

@@ -7,9 +7,9 @@ import Screen from "./components/Screen";
 
 function App() {
 
-  const [disp, setDisp] = useState([])
+  const [disp, setDisp] = useState("")
 
-  const [value, setValue] = useState([])
+  const [value, setValue] = useState("")
 
   function handleChange(event) {
     const input = event.target.value
@@ -19,7 +19,8 @@ function App() {
   }
 
   function errorCatch() {
-    setValue(prevState => prevState === "+" ||
+    setValue(prevState => 
+    prevState === "+" ||
     prevState === "*" ||
     prevState === "/" ||
     prevState === "-+" ||
@@ -27,14 +28,16 @@ function App() {
     prevState === "-/" ||
     prevState === "--"
     ? setDisp("ERROR")
+    : prevState.length > 20
+    ? setDisp("MAX LIMIT REACHED")
     : prevState)
   }
 
   function calculate() {
 
     setDisp(eval(value))
-    setValue(value) 
-
+    setValue(value)
+ 
   }
 
   function backspace() {

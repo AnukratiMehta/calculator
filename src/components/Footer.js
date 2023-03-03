@@ -7,7 +7,7 @@ const Footer = () => {
                 Built with <span className="heart">&#10084;</span> by Anukrati Mehta
             </p>
             <div className="source">
-                <a target="_blank" rel='noreferrer' href='https://anukratimehta.github.io/calculator'>Source code</a>
+                <a target="_blank" rel='noreferrer' href='https://github.com/AnukratiMehta/calculator.git'>Source code</a>
             </div>
         </div>
     )
